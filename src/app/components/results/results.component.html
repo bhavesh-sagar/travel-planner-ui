@@ -1,0 +1,11 @@
+<div *ngIf="data">
+  <h3>{{ data.summary }}</h3>
+
+  <ul>
+    <li *ngFor="let place of data.places">
+      {{ place }}
+    </li>
+  </ul>
+
+  <p><b>Tips:</b> {{ data.tips }}</p>
+</div>
