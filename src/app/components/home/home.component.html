@@ -3,5 +3,4 @@
     <input [(ngModel)]="destination" placeholder="Enter destination" />
     <button (click)="search()">Search</button>
     <app-loader *ngIf="loading"></app-loader>
-    <app-results *ngIf="result" [data]="result"></app-results>
 </div>

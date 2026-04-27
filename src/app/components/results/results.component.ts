@@ -1,10 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-results',
-  templateUrl: './results.component.html',
-  styleUrl: './results.component.scss'
+  templateUrl: './results.component.html'
 })
 export class ResultsComponent {
-  @Input() data: any;
+
+  data: any;
+
+  ngOnInit() {
+    const stored = localStorage.getItem('travelData');
+    this.data = stored ? JSON.parse(stored) : null;
+  }
 }
