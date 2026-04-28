@@ -49,22 +49,22 @@ body {
     padding: 10px 12px;
     border-radius: 10px;
     margin-bottom: 8px;
-    // justify-content: center;
-    // display: flex;
     cursor: pointer;
     transition: all 0.2s ease;
 
-    color: #e2e8f0;
+    color: #1e293b;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(6px);
 }
 
 .history-item:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(55, 33, 255, 0.169);
 }
 
 .history-item.active {
     background: #1e293b;
     color: white;
-    font-weight: 500;
 }
 
 .history-item {

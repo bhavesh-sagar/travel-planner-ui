@@ -8,11 +8,11 @@
         <div class="history">
             <div *ngFor="let item of chatHistory" (click)="loadChat(item)" [class.active]="item === activeChat"
                 class="history-item">
-                {{ item.title }}
+                <div>{{ item.title }}</div>
             </div>
         </div>
     </aside>
     <main class="main">
-        <app-chat [chat]="activeChat"></app-chat>
+        <app-chat [chat]="activeChat" (titleChanged)="updateChatTitle($event)"></app-chat>
     </main>
 </div>

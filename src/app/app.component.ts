@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
 
   newChat() {
     const chat = {
+      id: Date.now(),
       title: 'New Chat',
       messages: []
     };

@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { marked } from 'marked';
 
@@ -10,6 +10,7 @@ import { marked } from 'marked';
 export class ChatComponent implements OnDestroy {
 
   @Input() chat: any;
+  @Output() titleChanged = new EventEmitter<any>();
   userInput = '';
 
   @ViewChild('scrollContainer') scrollContainer!: ElementRef;
@@ -19,8 +20,12 @@ export class ChatComponent implements OnDestroy {
   constructor(private api: ApiService) { }
 
   async send() {
-    if (!this.userInput.trim()) return;
-    if (!this.chat) this.chat = { messages: [] };
+    if (!this.userInput.trim()) {
+      return;
+    }
+    if (!this.chat) {
+      this.chat = { messages: [] };
+    }
     this.chat.messages.push({
       role: 'user',
       content: this.userInput
@@ -28,6 +33,7 @@ export class ChatComponent implements OnDestroy {
 
     if (this.chat.messages.length === 1) {
       this.chat.title = this.userInput.slice(0, 30);
+      this.titleChanged.emit(this.chat);
     }
 
     const query = this.userInput;
