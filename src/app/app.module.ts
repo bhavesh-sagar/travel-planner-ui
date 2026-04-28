@@ -10,6 +10,8 @@ import { ResultsComponent } from './components/results/results.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ChatComponent } from './components/chat/chat.component';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     HomeComponent,
     ResultsComponent,
-    LoaderComponent
+    LoaderComponent,
+    ChatComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,

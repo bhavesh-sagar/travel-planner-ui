@@ -1,0 +1,44 @@
+<div class="chat-root">
+    <div *ngIf="!chat || chat.messages.length === 0" class="empty glass-card">
+        <h1 class="title">
+            <img src="assets/vectra1.png" class="title-icon" />
+            Plan your next trip
+        </h1>
+        <div class="hero-input">
+            <input [(ngModel)]="userInput" (keyup.enter)="send()" placeholder="Ask travel plan..." />
+            <button (click)="send()">➤</button>
+        </div>
+        <div class="suggestions">
+            <button (click)="quick('Plan a 3-day trip to Goa with budget')">Beach Trip</button>
+            <button (click)="quick('Best places to visit in India during winter with itinerary')">Seasonal
+                Travel</button>
+            <button (click)="quick('Dubai trip cost, itinerary and visa details')">International Trip</button>
+        </div>
+    </div>
+
+    <div *ngIf="chat && chat.messages.length > 0" class="chat-mode">
+        <div class="messages" #scrollContainer>
+            <div *ngFor="let msg of chat.messages" class="message" [ngClass]="msg.role">
+                <div class="avatar"> {{ msg.role === 'user' ? '🧑' : '🤖' }}</div>
+                <div class="bubble">
+                    <div *ngIf="msg.role === 'user'">
+                        {{ msg.content }}
+                    </div>
+                    <div *ngIf="msg.role === 'bot'">
+                        <div *ngIf="msg.loading" class="typing">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div *ngIf="!msg.loading" class="markdown" [innerHTML]="msg.content | safeHtml">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="input-wrapper">
+            <div class="chat-input">
+                <input [(ngModel)]="userInput" (keyup.enter)="send()" placeholder="Ask anything about travel..." />
+                <button (click)="send()">Send</button>
+            </div>
+        </div>
+    </div>
+</div>

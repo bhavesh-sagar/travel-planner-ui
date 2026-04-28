@@ -6,14 +6,18 @@ import { Injectable } from '@angular/core';
 })
 export class ApiService {
 
-  private baseUrl = 'http://127.0.0.1:8000';
+  private baseUrl = 'https://travel-planner-sv.onrender.com/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getTravelPlan(destination: string) {
-    return this.http.post(`${this.baseUrl}/api/ultimate-agent`, {
+    return this.http.post(`${this.baseUrl}api/ultimate-agent`, {
       destination: destination,
-      user: "bhavesh"
+      user: "user"
     });
+  }
+
+  wakeServer(): Promise<any> {
+    return fetch(`${this.baseUrl}`).then(res => res.json());
   }
 }

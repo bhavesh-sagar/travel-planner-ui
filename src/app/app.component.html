@@ -1,3 +1,18 @@
-<app-navbar></app-navbar>
-
-<router-outlet></router-outlet>
+<div class="app-layout">
+    <aside class="sidebar">
+        <h2 class="logo">
+            <img src="assets/vectra2.png" />
+            VectraTrip AI
+        </h2>
+        <button (click)="newChat()"> New Chat</button>
+        <div class="history">
+            <div *ngFor="let item of chatHistory" (click)="loadChat(item)" [class.active]="item === activeChat"
+                class="history-item">
+                {{ item.title }}
+            </div>
+        </div>
+    </aside>
+    <main class="main">
+        <app-chat [chat]="activeChat"></app-chat>
+    </main>
+</div>
